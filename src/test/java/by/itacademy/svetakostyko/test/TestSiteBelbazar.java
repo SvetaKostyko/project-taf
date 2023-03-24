@@ -1,4 +1,6 @@
 package by.itacademy.svetakostyko.test;
+import by.itacademy.svetakostyko.test.ui.KeysPage;
+import by.itacademy.svetakostyko.test.ui.TestSiteBelbazarPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;

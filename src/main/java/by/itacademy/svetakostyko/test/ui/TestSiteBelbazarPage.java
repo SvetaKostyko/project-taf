@@ -1,4 +1,4 @@
-package by.itacademy.svetakostyko.test;
+package by.itacademy.svetakostyko.test.ui;
 
 public class TestSiteBelbazarPage {
     public static String URL = "https://belbazar24.by/";
