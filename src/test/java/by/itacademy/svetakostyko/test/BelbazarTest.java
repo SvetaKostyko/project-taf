@@ -1,6 +1,6 @@
 package by.itacademy.svetakostyko.test;
 import by.itacademy.svetakostyko.test.ui.KeysPage;
-import by.itacademy.svetakostyko.test.ui.TestSiteBelbazarPage;
+import by.itacademy.svetakostyko.test.ui.BelbazarPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 
-public class TestSiteBelbazar {
+public class BelbazarTest {
     WebDriver driver;
 
     @BeforeEach
@@ -27,19 +27,19 @@ public class TestSiteBelbazar {
     /*    System.setProperty("webdriver.http.factory", "jdk-http-client");
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\Sveta\\chromedriver.exe");*/
         driver.manage().window().maximize();
-        driver.navigate().to(TestSiteBelbazarPage.URL);
+        driver.navigate().to(BelbazarPage.URL);
     }
 
     @Test
     public void testLogInValidatedData() {
-        driver.findElement(By.xpath(TestSiteBelbazarPage.BUTTON_OF_PROFILE)).click();
-        driver.findElement(By.xpath(TestSiteBelbazarPage.EMAIL_FIELD))
+        driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
+        driver.findElement(By.xpath(BelbazarPage.EMAIL_FIELD))
                 .sendKeys(KeysPage.EMAIL);
-        driver.findElement(By.xpath(TestSiteBelbazarPage.PASSWORD_FIELD))
+        driver.findElement(By.xpath(BelbazarPage.PASSWORD_FIELD))
                 .sendKeys(KeysPage.PASSWORD);
-        driver.findElement(By.xpath(TestSiteBelbazarPage.LOGIN_BUTTON)).click();
-        String actualUserName = driver.findElement(By.xpath(TestSiteBelbazarPage.LABEL_OF_USER)).getText();
-        String actualLabelOfLogIn = driver.findElement(By.xpath(TestSiteBelbazarPage.STATUS_OF_LOGIN))
+        driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
+        String actualUserName = driver.findElement(By.xpath(BelbazarPage.LABEL_OF_USER)).getText();
+        String actualLabelOfLogIn = driver.findElement(By.xpath(BelbazarPage.STATUS_OF_LOGIN))
                 .getAttribute(KeysPage.ATTRIBUTE_OF_USER);
         Assertions.assertEquals( KeysPage.USER_NAME,actualUserName);
         Assertions.assertEquals(KeysPage.LABEL_OF_LOGIN, actualLabelOfLogIn);
