@@ -8,5 +8,6 @@ public class BelbazarPage {
     public static String LOGIN_BUTTON = "//div[@class='button blue'][contains(text(),'Войти')]";
     public static String LABEL_OF_USER = "//a[@href='/profile/']";
     public static String STATUS_OF_LOGIN = "//a[contains(@class,'top_block_link profile')]";
+    public static String ERROR_MASSAGE = "//div[@class='auth_error_message'][contains(text(),'Ошибка!')]";
 
 }

@@ -41,20 +41,20 @@ public class BelbazarTest {
         String actualUserName = driver.findElement(By.xpath(BelbazarPage.LABEL_OF_USER)).getText();
         String actualLabelOfLogIn = driver.findElement(By.xpath(BelbazarPage.STATUS_OF_LOGIN))
                 .getAttribute(KeysPage.ATTRIBUTE_OF_USER);
-        Assertions.assertEquals( KeysPage.USER_NAME,actualUserName);
+        Assertions.assertEquals(KeysPage.USER_NAME,actualUserName);
         Assertions.assertEquals(KeysPage.LABEL_OF_LOGIN, actualLabelOfLogIn);
      }
 
     @Test
     public void testLogInWithoutPassword() {
-        driver.findElement(By.xpath("//a[@class='top_block_link profile']")).click();
-        driver.findElement(By.xpath("//input[@name='info[login]']"))
-                .sendKeys("123tfh123@mail.ru");
-        driver.findElement(By.xpath("//div[@class='button blue'][contains(text(),'Войти')]")).click();
+        driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
+        driver.findElement(By.xpath(BelbazarPage.EMAIL_FIELD))
+                .sendKeys(KeysPage.EMAIL);
+        driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
         String errorMassage = new WebDriverWait(driver, Duration.ofSeconds(4))
                 .until(ExpectedConditions
-                        .visibilityOfElementLocated(By.xpath("//div[@class='auth_error_message'][contains(text(),'Ошибка!')]"))).getText();
-        Assertions.assertEquals("Ошибка! Не правильно введен E-mail или Пароль.", errorMassage);
+                        .visibilityOfElementLocated(By.xpath(BelbazarPage.ERROR_MASSAGE))).getText();
+        Assertions.assertEquals(KeysPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
     }
 
     @Test
