@@ -1,4 +1,4 @@
-package by.itacademy.svetakostyko.test;
+package by.itacademy.svetakostyko.test.ui;
 
 public class KeysPage {
     public static String EMAIL = "123tfh123@mail.ru";
