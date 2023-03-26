@@ -1,4 +1,5 @@
 package by.itacademy.svetakostyko.test;
+
 import by.itacademy.svetakostyko.test.ui.KeysPage;
 import by.itacademy.svetakostyko.test.ui.BelbazarPage;
 import org.junit.jupiter.api.AfterEach;
@@ -41,9 +42,9 @@ public class BelbazarTest {
         String actualUserName = driver.findElement(By.xpath(BelbazarPage.LABEL_OF_USER)).getText();
         String actualLabelOfLogIn = driver.findElement(By.xpath(BelbazarPage.STATUS_OF_LOGIN))
                 .getAttribute(KeysPage.ATTRIBUTE_OF_USER);
-        Assertions.assertEquals(KeysPage.USER_NAME,actualUserName);
+        Assertions.assertEquals(KeysPage.USER_NAME, actualUserName);
         Assertions.assertEquals(KeysPage.LABEL_OF_LOGIN, actualLabelOfLogIn);
-     }
+    }
 
     @Test
     public void testLogInWithoutPassword() {
@@ -83,18 +84,25 @@ public class BelbazarTest {
     public void testSearchCostume() {
         driver.findElement(By.xpath(BelbazarPage.SEARCH_FIELD)).sendKeys(KeysPage.PRODUCT);
         driver.findElement(By.xpath(BelbazarPage.SEARCH_BUTTON)).click();
-        String firstProductOnPage = new WebDriverWait(driver,Duration.ofSeconds(3))
+        String firstProductOnPageBrand = new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions
-                        .visibilityOfElementLocated((By.xpath("(//div[@class='product_item_dop'])[1]"))))
-                .getText();
-        driver.findElement(By.xpath("(//div[@class='product_item_basket but'])[1]")).click();
-        new WebDriverWait(driver,Duration.ofSeconds(3)).until(ExpectedConditions
-                .visibilityOfElementLocated(By.xpath("//div[@id='modal_check_par_911']"))).click();
-        driver.findElement(By.xpath("//div[@class='button blue to_basket']")).click();
-        driver.findElement(By.xpath("//a[@class='top_block_link basket']")).click();
-        String productInBasket = driver.findElement(By.xpath("//div[@class='basket_item_brand']")).getText();
-        Assertions.assertEquals(firstProductOnPage, productInBasket);
+                        .visibilityOfElementLocated((By.xpath((BelbazarPage.BRAND_NAME))))).getText();
+        String firstProductOnPageCode = driver.findElement(By.xpath((BelbazarPage.CODE_OF_PRODUCT))).getText().substring(5, 9);
+        driver.findElement(By.xpath(BelbazarPage.BASKET_BUTTON)).click();
+        String sizeOfProduct = new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath(BelbazarPage.SIZE_BUTTON))).getText();
+        driver.findElement(By.xpath(BelbazarPage.SIZE_BUTTON)).click();
+        driver.findElement(By.xpath(BelbazarPage.BUTTON_TO_BASKET)).click();
+        driver.findElement(By.xpath(BelbazarPage.TOP_BASKET)).click();
+        String productInBasket = new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath(BelbazarPage.BRAND_IN_BASKET))).getText();
+        String codeOfProductInBasket = driver.findElement(By.xpath(BelbazarPage.CODE_IN_BASKET)).getText();
+        String sizeInBasket = driver.findElement(By.xpath(BelbazarPage.SIZE_OF_PRODUCT_IN_BASKET)).getText();
+        Assertions.assertEquals(firstProductOnPageBrand, productInBasket);
+        Assertions.assertEquals(firstProductOnPageCode, codeOfProductInBasket);
+        Assertions.assertEquals(sizeOfProduct, sizeInBasket);
     }
+
     @Test
     public void testLogOut() {
         driver.findElement(By.xpath("//a[@class='top_block_link profile']")).click();
