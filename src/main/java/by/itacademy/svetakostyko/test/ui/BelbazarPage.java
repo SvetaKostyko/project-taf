@@ -16,6 +16,10 @@ public class BelbazarPage {
     public static String BASKET_BUTTON = "(//div[@class='product_item_basket but'])[1]";
     public static String SIZE_BUTTON = "(//div[@class='prod_size_item'])[1]";
     public static String BUTTON_TO_BASKET = "//div[@class='button blue to_basket']";
+    public static String TOP_BASKET = "//a[@class='top_block_link basket']";
+    public static String BRAND_IN_BASKET ="//div[@class='basket_item_brand']";
+    public static String CODE_IN_BASKET = "(//div[@class='param']//div[@class='rightText'])[2]";
+    public static String SIZE_OF_PRODUCT_IN_BASKET = "//div[@class='basket_size_box']";
 
 
 }
