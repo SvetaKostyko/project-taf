@@ -10,5 +10,7 @@ public class BelbazarPage {
     public static String STATUS_OF_LOGIN = "//a[contains(@class,'top_block_link profile')]";
     public static String ERROR_MASSAGE = "//div[@class='auth_error_message'][contains(text(),'Ошибка!')]";
     public static String SEARCH_FIELD = "//input[@placeholder='Поиск товара']";
+    public static String SEARCH_BUTTON = "//div[@class='top_search_button']";
+
 
 }
