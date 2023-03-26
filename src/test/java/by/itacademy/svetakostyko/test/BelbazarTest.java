@@ -59,14 +59,14 @@ public class BelbazarTest {
 
     @Test
     public void testLogInWithoutEmail() {
-        driver.findElement(By.xpath("//a[@class='top_block_link profile']")).click();
-        driver.findElement(By.xpath("//div[@class='auth_mode email']//input[@type='password']"))
-                .sendKeys("bh123bh");
-        driver.findElement(By.xpath("//div[@class='button blue'][contains(text(),'Войти')]")).click();
+        driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
+        driver.findElement(By.xpath(BelbazarPage.PASSWORD_FIELD))
+                .sendKeys(KeysPage.PASSWORD);
+        driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
         String errorMassage = new WebDriverWait(driver, Duration.ofSeconds(4))
                 .until(ExpectedConditions
-                        .visibilityOfElementLocated(By.xpath("//div[@class='auth_error_message'][contains(text(),'Ошибка!')]"))).getText();
-        Assertions.assertEquals("Ошибка! Не правильно введен E-mail или Пароль.", errorMassage);
+                        .visibilityOfElementLocated(By.xpath(BelbazarPage.ERROR_MASSAGE))).getText();
+        Assertions.assertEquals(KeysPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
     }
 
     @Test
