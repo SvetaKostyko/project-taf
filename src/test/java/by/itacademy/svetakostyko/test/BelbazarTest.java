@@ -81,8 +81,8 @@ public class BelbazarTest {
 
     @Test
     public void testSearchCostume() {
-        driver.findElement(By.xpath("//input[@placeholder='Поиск товара']")).sendKeys("Костюмы");
-        driver.findElement(By.xpath("//div[@class='top_search_button']")).click();
+        driver.findElement(By.xpath(BelbazarPage.SEARCH_FIELD)).sendKeys(KeysPage.PRODUCT);
+        driver.findElement(By.xpath(BelbazarPage.SEARCH_BUTTON)).click();
         String firstProductOnPage = new WebDriverWait(driver,Duration.ofSeconds(3))
                 .until(ExpectedConditions
                         .visibilityOfElementLocated((By.xpath("(//div[@class='product_item_dop'])[1]"))))
