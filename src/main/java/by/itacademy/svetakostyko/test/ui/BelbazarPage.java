@@ -15,6 +15,7 @@ public class BelbazarPage {
     public static String CODE_OF_PRODUCT = "(//div[@class='product_item_art'])[1]";
     public static String BASKET_BUTTON = "(//div[@class='product_item_basket but'])[1]";
     public static String SIZE_BUTTON = "(//div[@class='prod_size_item'])[1]";
+    public static String BUTTON_TO_BASKET = "//div[@class='button blue to_basket']";
 
 
 }
