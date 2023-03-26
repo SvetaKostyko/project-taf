@@ -13,6 +13,8 @@ public class BelbazarPage {
     public static String SEARCH_BUTTON = "//div[@class='top_search_button']";
     public static String BRAND_NAME = "(//div[@class='product_item_dop'])[1]";
     public static String CODE_OF_PRODUCT = "(//div[@class='product_item_art'])[1]";
+    public static String BASKET_BUTTON = "(//div[@class='product_item_basket but'])[1]";
+    public static String SIZE_BUTTON = "(//div[@class='prod_size_item'])[1]";
 
 
 }
