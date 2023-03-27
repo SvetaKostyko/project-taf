@@ -7,8 +7,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class Util {
-    public static void waitForElementToBeVisibleByXPath(WebDriver driver, String xpath, int seconds) {
-            new WebDriverWait(driver, Duration.ofSeconds(seconds))
-                    .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
-        }
+    public static String waitForElementToBeVisibleByXPath(WebDriver driver, String xpath, int seconds) {
+            String text = new WebDriverWait(driver, Duration.ofSeconds(seconds))
+                    .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+        return text;
+    }
 }
