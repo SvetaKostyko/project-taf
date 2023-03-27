@@ -86,8 +86,7 @@ public class BelbazarTest {
         driver.findElement(By.xpath(BelbazarPage.SIZE_BUTTON)).click();
         driver.findElement(By.xpath(BelbazarPage.BUTTON_TO_BASKET)).click();
         driver.findElement(By.xpath(BelbazarPage.TOP_BASKET)).click();
-        String productInBasket = new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions
-                .visibilityOfElementLocated(By.xpath(BelbazarPage.BRAND_IN_BASKET))).getText();
+        String productInBasket = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.BRAND_IN_BASKET, 3);
         String codeOfProductInBasket = driver.findElement(By.xpath(BelbazarPage.CODE_IN_BASKET)).getText();
         String sizeInBasket = driver.findElement(By.xpath(BelbazarPage.SIZE_OF_PRODUCT_IN_BASKET)).getText();
         Assertions.assertEquals(firstProductOnPageBrand, productInBasket);
