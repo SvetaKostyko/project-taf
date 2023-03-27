@@ -1,6 +1,5 @@
 package by.itacademy.svetakostyko.test;
-
-import by.itacademy.svetakostyko.test.ui.KeysPage;
+import by.itacademy.svetakostyko.test.ui.TextPage;
 import by.itacademy.svetakostyko.test.ui.BelbazarPage;
 import by.itacademy.svetakostyko.test.ui.UserPage;
 import by.itacademy.svetakostyko.test.ui.Util;
@@ -47,7 +46,7 @@ public class BelbazarTest {
                 .sendKeys(UserPage.EMAIL);
         driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
         String errorMassage = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.ERROR_MASSAGE, 3);
-        Assertions.assertEquals(KeysPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
+        Assertions.assertEquals(TextPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
     }
 
     @Test
@@ -58,7 +57,7 @@ public class BelbazarTest {
                 .sendKeys(UserPage.PASSWORD);
         driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
         String errorMassage = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.ERROR_MASSAGE, 3);
-        Assertions.assertEquals(KeysPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
+        Assertions.assertEquals(TextPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
     }
 
     @Test
@@ -67,13 +66,13 @@ public class BelbazarTest {
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
         driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
         String errorMassage = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.ERROR_MASSAGE, 3);
-        Assertions.assertEquals(KeysPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
+        Assertions.assertEquals(TextPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
     }
 
     @Test
     @DisplayName("Поиск товара")
     public void testSearchCostume() {
-        driver.findElement(By.xpath(BelbazarPage.SEARCH_FIELD)).sendKeys(KeysPage.PRODUCT);
+        driver.findElement(By.xpath(BelbazarPage.SEARCH_FIELD)).sendKeys(TextPage.PRODUCT);
         driver.findElement(By.xpath(BelbazarPage.SEARCH_BUTTON)).click();
         String firstProductOnPageBrand = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.BRAND_NAME, 3);
         String firstProductOnPageCode = driver.findElement(By.xpath((BelbazarPage.CODE_OF_PRODUCT))).getText().substring(5, 9);
