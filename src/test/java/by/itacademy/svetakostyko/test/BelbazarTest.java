@@ -2,17 +2,13 @@ package by.itacademy.svetakostyko.test;
 
 import by.itacademy.svetakostyko.test.ui.KeysPage;
 import by.itacademy.svetakostyko.test.ui.BelbazarPage;
+import by.itacademy.svetakostyko.test.ui.UserPage;
 import by.itacademy.svetakostyko.test.ui.Util;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-
 
 public class BelbazarTest {
     WebDriver driver;
@@ -32,15 +28,15 @@ public class BelbazarTest {
     public void testLogInValidatedData() {
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
         driver.findElement(By.xpath(BelbazarPage.EMAIL_FIELD))
-                .sendKeys(KeysPage.EMAIL);
+                .sendKeys(UserPage.EMAIL);
         driver.findElement(By.xpath(BelbazarPage.PASSWORD_FIELD))
-                .sendKeys(KeysPage.PASSWORD);
+                .sendKeys(UserPage.PASSWORD);
         driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
         String actualUserName = driver.findElement(By.xpath(BelbazarPage.LABEL_OF_USER)).getText();
         String actualLabelOfLogIn = driver.findElement(By.xpath(BelbazarPage.STATUS_OF_LOGIN))
-                .getAttribute(KeysPage.ATTRIBUTE_OF_USER);
-        Assertions.assertEquals(KeysPage.USER_NAME, actualUserName);
-        Assertions.assertEquals(KeysPage.LABEL_OF_LOGIN, actualLabelOfLogIn);
+                .getAttribute(UserPage.ATTRIBUTE_OF_USER);
+        Assertions.assertEquals(UserPage.USER_NAME, actualUserName);
+        Assertions.assertEquals(UserPage.LABEL_OF_LOGIN, actualLabelOfLogIn);
     }
 
     @Test
@@ -48,7 +44,7 @@ public class BelbazarTest {
     public void testLogInWithoutPassword() {
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
         driver.findElement(By.xpath(BelbazarPage.EMAIL_FIELD))
-                .sendKeys(KeysPage.EMAIL);
+                .sendKeys(UserPage.EMAIL);
         driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
         String errorMassage = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.ERROR_MASSAGE, 3);
         Assertions.assertEquals(KeysPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
@@ -59,7 +55,7 @@ public class BelbazarTest {
     public void testLogInWithoutEmail() {
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
         driver.findElement(By.xpath(BelbazarPage.PASSWORD_FIELD))
-                .sendKeys(KeysPage.PASSWORD);
+                .sendKeys(UserPage.PASSWORD);
         driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
         String errorMassage = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.ERROR_MASSAGE, 3);
         Assertions.assertEquals(KeysPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
@@ -99,15 +95,15 @@ public class BelbazarTest {
     public void testLogOut() {
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
         driver.findElement(By.xpath(BelbazarPage.EMAIL_FIELD))
-                .sendKeys(KeysPage.EMAIL);
+                .sendKeys(UserPage.EMAIL);
         driver.findElement(By.xpath(BelbazarPage.PASSWORD_FIELD))
-                .sendKeys(KeysPage.PASSWORD);
+                .sendKeys(UserPage.PASSWORD);
         driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
         driver.findElement(By.xpath(BelbazarPage.LABEL_OF_USER)).click();
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_LOGOUT)).click();
         String actualLabelOfLogIn = driver.findElement(By.xpath(BelbazarPage.STATUS_OF_LOGIN))
-                .getAttribute(KeysPage.ATTRIBUTE_OF_USER);
-        Assertions.assertEquals(KeysPage.LABEL_OF_LOGOUT, actualLabelOfLogIn);
+                .getAttribute(UserPage.ATTRIBUTE_OF_USER);
+        Assertions.assertEquals(UserPage.LABEL_OF_LOGOUT, actualLabelOfLogIn);
     }
 
     @AfterEach
