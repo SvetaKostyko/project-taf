@@ -25,8 +25,8 @@ public class BelbazarTest {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-allow-origins=*");
         chromeOptions.addArguments("--disable-notifications");
+        chromeOptions.addArguments("start-maximized");
         driver = new ChromeDriver(chromeOptions);
-        driver.manage().window().maximize();
         driver.navigate().to(BelbazarPage.URL);
     }
 
