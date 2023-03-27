@@ -113,9 +113,9 @@ public class BelbazarTest {
         driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
         driver.findElement(By.xpath(BelbazarPage.LABEL_OF_USER)).click();
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_LOGOUT)).click();
-        String actualLabelOfLogIn = driver.findElement(By.xpath("//a[contains(@class,'top_block_link profile')]"))
-                .getAttribute("onclick");
-        Assertions.assertEquals("return show_object('auth');", actualLabelOfLogIn);
+        String actualLabelOfLogIn = driver.findElement(By.xpath(BelbazarPage.STATUS_OF_LOGIN))
+                .getAttribute(KeysPage.ATTRIBUTE_OF_USER);
+        Assertions.assertEquals(KeysPage.LABEL_OF_LOGOUT, actualLabelOfLogIn);
     }
 
     @AfterEach
