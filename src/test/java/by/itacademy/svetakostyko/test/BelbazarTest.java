@@ -3,12 +3,9 @@ package by.itacademy.svetakostyko.test;
 import by.itacademy.svetakostyko.test.ui.KeysPage;
 import by.itacademy.svetakostyko.test.ui.BelbazarPage;
 import by.itacademy.svetakostyko.test.ui.Util;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,6 +28,7 @@ public class BelbazarTest {
     }
 
     @Test
+    @DisplayName("Авторизация с корректными данными")
     public void testLogInValidatedData() {
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
         driver.findElement(By.xpath(BelbazarPage.EMAIL_FIELD))
@@ -46,6 +44,7 @@ public class BelbazarTest {
     }
 
     @Test
+    @DisplayName("Авторизация без пароля")
     public void testLogInWithoutPassword() {
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
         driver.findElement(By.xpath(BelbazarPage.EMAIL_FIELD))
@@ -56,6 +55,7 @@ public class BelbazarTest {
     }
 
     @Test
+    @DisplayName("Авторизация без e-mail")
     public void testLogInWithoutEmail() {
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
         driver.findElement(By.xpath(BelbazarPage.PASSWORD_FIELD))
@@ -66,6 +66,7 @@ public class BelbazarTest {
     }
 
     @Test
+    @DisplayName("Авторизация без e-mail и без пароля")
     public void testLogInWithoutData() {
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
         driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
@@ -74,12 +75,11 @@ public class BelbazarTest {
     }
 
     @Test
+    @DisplayName("Поиск товара")
     public void testSearchCostume() {
         driver.findElement(By.xpath(BelbazarPage.SEARCH_FIELD)).sendKeys(KeysPage.PRODUCT);
         driver.findElement(By.xpath(BelbazarPage.SEARCH_BUTTON)).click();
-        String firstProductOnPageBrand = new WebDriverWait(driver, Duration.ofSeconds(3))
-                .until(ExpectedConditions
-                        .visibilityOfElementLocated((By.xpath((BelbazarPage.BRAND_NAME))))).getText();
+        String firstProductOnPageBrand = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.BRAND_NAME, 3);
         String firstProductOnPageCode = driver.findElement(By.xpath((BelbazarPage.CODE_OF_PRODUCT))).getText().substring(5, 9);
         driver.findElement(By.xpath(BelbazarPage.BASKET_BUTTON)).click();
         String sizeOfProduct = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.SIZE_BUTTON, 3);
@@ -95,6 +95,7 @@ public class BelbazarTest {
     }
 
     @Test
+    @DisplayName("Выход из учетной записи")
     public void testLogOut() {
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
         driver.findElement(By.xpath(BelbazarPage.EMAIL_FIELD))
@@ -108,7 +109,7 @@ public class BelbazarTest {
                 .getAttribute(KeysPage.ATTRIBUTE_OF_USER);
         Assertions.assertEquals(KeysPage.LABEL_OF_LOGOUT, actualLabelOfLogIn);
     }
-
+//(//div[@class="product_item_price sale"]//span[@class="price"])[1]
     @AfterEach
     void closeDriver() {
         driver.quit();
