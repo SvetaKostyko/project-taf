@@ -61,9 +61,7 @@ public class BelbazarTest {
         driver.findElement(By.xpath(BelbazarPage.PASSWORD_FIELD))
                 .sendKeys(KeysPage.PASSWORD);
         driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
-        String errorMassage = new WebDriverWait(driver, Duration.ofSeconds(4))
-                .until(ExpectedConditions
-                        .visibilityOfElementLocated(By.xpath(BelbazarPage.ERROR_MASSAGE))).getText();
+        String errorMassage = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.ERROR_MASSAGE, 3);
         Assertions.assertEquals(KeysPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
     }
 
@@ -71,9 +69,7 @@ public class BelbazarTest {
     public void testLogInWithoutData() {
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
         driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
-        String errorMassage = new WebDriverWait(driver, Duration.ofSeconds(4))
-                .until(ExpectedConditions
-                        .visibilityOfElementLocated(By.xpath(BelbazarPage.ERROR_MASSAGE))).getText();
+        String errorMassage = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.ERROR_MASSAGE, 3);
         Assertions.assertEquals(KeysPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
     }
 
@@ -86,8 +82,7 @@ public class BelbazarTest {
                         .visibilityOfElementLocated((By.xpath((BelbazarPage.BRAND_NAME))))).getText();
         String firstProductOnPageCode = driver.findElement(By.xpath((BelbazarPage.CODE_OF_PRODUCT))).getText().substring(5, 9);
         driver.findElement(By.xpath(BelbazarPage.BASKET_BUTTON)).click();
-        String sizeOfProduct = new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions
-                .visibilityOfElementLocated(By.xpath(BelbazarPage.SIZE_BUTTON))).getText();
+        String sizeOfProduct = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.SIZE_BUTTON, 3);
         driver.findElement(By.xpath(BelbazarPage.SIZE_BUTTON)).click();
         driver.findElement(By.xpath(BelbazarPage.BUTTON_TO_BASKET)).click();
         driver.findElement(By.xpath(BelbazarPage.TOP_BASKET)).click();
