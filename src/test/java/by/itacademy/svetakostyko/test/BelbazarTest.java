@@ -2,6 +2,7 @@ package by.itacademy.svetakostyko.test;
 
 import by.itacademy.svetakostyko.test.ui.KeysPage;
 import by.itacademy.svetakostyko.test.ui.BelbazarPage;
+import by.itacademy.svetakostyko.test.ui.Util;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -25,8 +26,6 @@ public class BelbazarTest {
         chromeOptions.addArguments("--remote-allow-origins=*");
         chromeOptions.addArguments("--disable-notifications");
         driver = new ChromeDriver(chromeOptions);
-    /*    System.setProperty("webdriver.http.factory", "jdk-http-client");
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Sveta\\chromedriver.exe");*/
         driver.manage().window().maximize();
         driver.navigate().to(BelbazarPage.URL);
     }
@@ -52,9 +51,7 @@ public class BelbazarTest {
         driver.findElement(By.xpath(BelbazarPage.EMAIL_FIELD))
                 .sendKeys(KeysPage.EMAIL);
         driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
-        String errorMassage = new WebDriverWait(driver, Duration.ofSeconds(4))
-                .until(ExpectedConditions
-                        .visibilityOfElementLocated(By.xpath(BelbazarPage.ERROR_MASSAGE))).getText();
+        String errorMassage = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.ERROR_MASSAGE, 3);
         Assertions.assertEquals(KeysPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
     }
 
