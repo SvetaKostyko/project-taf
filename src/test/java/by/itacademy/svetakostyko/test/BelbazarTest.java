@@ -109,7 +109,7 @@ public class BelbazarTest {
                 .getAttribute(KeysPage.ATTRIBUTE_OF_USER);
         Assertions.assertEquals(KeysPage.LABEL_OF_LOGOUT, actualLabelOfLogIn);
     }
-//(//div[@class="product_item_price sale"]//span[@class="price"])[1]
+
     @AfterEach
     void closeDriver() {
         driver.quit();
