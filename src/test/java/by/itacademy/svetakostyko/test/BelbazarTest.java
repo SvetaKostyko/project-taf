@@ -105,14 +105,14 @@ public class BelbazarTest {
 
     @Test
     public void testLogOut() {
-        driver.findElement(By.xpath("//a[@class='top_block_link profile']")).click();
-        driver.findElement(By.xpath("//input[@name='info[login]']"))
-                .sendKeys("123tfh123@mail.ru");
-        driver.findElement(By.xpath("//div[@class='auth_mode email']//input[@type='password']"))
-                .sendKeys("bh123bh");
-        driver.findElement(By.xpath("//div[@class='button blue'][contains(text(),'Войти')]")).click();
-        driver.findElement(By.xpath("//a[@href='/profile/']")).click();
-        driver.findElement(By.xpath("//div[@class='l_menu_3ur_item']//a[@href='/profile/exit/']")).click();
+        driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
+        driver.findElement(By.xpath(BelbazarPage.EMAIL_FIELD))
+                .sendKeys(KeysPage.EMAIL);
+        driver.findElement(By.xpath(BelbazarPage.PASSWORD_FIELD))
+                .sendKeys(KeysPage.PASSWORD);
+        driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
+        driver.findElement(By.xpath(BelbazarPage.LABEL_OF_USER)).click();
+        driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_LOGOUT)).click();
         String actualLabelOfLogIn = driver.findElement(By.xpath("//a[contains(@class,'top_block_link profile')]"))
                 .getAttribute("onclick");
         Assertions.assertEquals("return show_object('auth');", actualLabelOfLogIn);
