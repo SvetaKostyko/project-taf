@@ -21,6 +21,13 @@ public class BelbazarPage {
     public static String CODE_IN_BASKET = "(//div[@class='param']//div[@class='rightText'])[2]";
     public static String SIZE_OF_PRODUCT_IN_BASKET = "//div[@class='basket_size_box']";
     public static String BUTTON_OF_LOGOUT = "//div[@class='l_menu_3ur_item']//a[@href='/profile/exit/']";
+    public static String ATTRIBUTE_OF_USER = "onclick";
+    public static String LABEL_OF_LOGIN = "return profile_menu();";
+    public static String LABEL_OF_LOGOUT = "return show_object('auth');";
 
-
+    public static String EMAIL = "123tfh123@mail.ru";
+    public static String PASSWORD = "bh123bh";
+    public static String USER_NAME = "Василий";
 }
+
+

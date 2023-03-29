@@ -1,8 +1,9 @@
 package by.itacademy.svetakostyko.test;
-import by.itacademy.svetakostyko.test.ui.TextPage;
-import by.itacademy.svetakostyko.test.ui.BelbazarPage;
-import by.itacademy.svetakostyko.test.ui.UserPage;
-import by.itacademy.svetakostyko.test.ui.Util;
+
+import by.itacademy.svetakostyko.test.ui.*;
+import by.itacademy.svetakostyko.test.ui.pages.LoginPage;
+import by.itacademy.svetakostyko.test.ui.pages.steps.LoginStep;
+import by.itacademy.svetakostyko.test.ui.steps.LoginStep;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,13 +25,9 @@ public class BelbazarTest {
 
     @Test
     @DisplayName("Авторизация с корректными данными")
-    public void testLogInValidatedData() {
-        driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
-        driver.findElement(By.xpath(BelbazarPage.EMAIL_FIELD))
-                .sendKeys(UserPage.EMAIL);
-        driver.findElement(By.xpath(BelbazarPage.PASSWORD_FIELD))
-                .sendKeys(UserPage.PASSWORD);
-        driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
+    public void testLogInWithValidData() {
+        LoginStep.loginUser(BelbazarPage.EMAIL, BelbazarPage.PASSWORD);
+        LoginStep.validateData;
         String actualUserName = driver.findElement(By.xpath(BelbazarPage.LABEL_OF_USER)).getText();
         String actualLabelOfLogIn = driver.findElement(By.xpath(BelbazarPage.STATUS_OF_LOGIN))
                 .getAttribute(UserPage.ATTRIBUTE_OF_USER);
