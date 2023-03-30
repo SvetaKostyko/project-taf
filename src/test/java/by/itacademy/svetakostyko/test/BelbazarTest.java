@@ -1,60 +1,45 @@
 package by.itacademy.svetakostyko.test;
 
-import by.itacademy.svetakostyko.test.ui.*;
+import by.itacademy.svetakostyko.test.driver.DriverConfiguration;
+import by.itacademy.svetakostyko.test.ui.BelbazarPage;
+import by.itacademy.svetakostyko.test.ui.TextPage;
+import by.itacademy.svetakostyko.test.ui.UserPage;
+import by.itacademy.svetakostyko.test.ui.Util;
 import by.itacademy.svetakostyko.test.ui.pages.LoginPage;
-import by.itacademy.svetakostyko.test.ui.pages.steps.LoginStep;
 import by.itacademy.svetakostyko.test.ui.steps.LoginStep;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.WebDriver;
+
+import static by.itacademy.svetakostyko.test.BelbazarProperties.*;
 
 public class BelbazarTest {
-    WebDriver driver;
+    WebDriver driver = DriverConfiguration.getDriver();
 
     @BeforeEach
     public void setUpBrowser() {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--remote-allow-origins=*");
-        chromeOptions.addArguments("--disable-notifications");
-        chromeOptions.addArguments("start-maximized");
-        driver = new ChromeDriver(chromeOptions);
         driver.navigate().to(BelbazarPage.URL);
     }
 
     @Test
     @DisplayName("Авторизация с корректными данными")
-    public void testLogInWithValidData() {
-        LoginStep.loginUser(BelbazarPage.EMAIL, BelbazarPage.PASSWORD);
-        LoginStep.validateData;
-        String actualUserName = driver.findElement(By.xpath(BelbazarPage.LABEL_OF_USER)).getText();
-        String actualLabelOfLogIn = driver.findElement(By.xpath(BelbazarPage.STATUS_OF_LOGIN))
-                .getAttribute(UserPage.ATTRIBUTE_OF_USER);
-        Assertions.assertEquals(UserPage.USER_NAME, actualUserName);
-        Assertions.assertEquals(UserPage.LABEL_OF_LOGIN, actualLabelOfLogIn);
+    public void testLoginUserWithValidData() {
+        LoginStep.StepLoginUser(EMAIL, PASSWORD);
+        Assertions.assertEquals(USER_NAME, LoginPage.getUserName());
     }
 
     @Test
     @DisplayName("Авторизация без пароля")
-    public void testLogInWithoutPassword() {
-        driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
-        driver.findElement(By.xpath(BelbazarPage.EMAIL_FIELD))
-                .sendKeys(UserPage.EMAIL);
-        driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
-        String errorMassage = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.ERROR_MASSAGE, 3);
-        Assertions.assertEquals(TextPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
+    public void testLoginUserWithEmailOnly() {
+        LoginStep.stepLoginUserWithEmailOnly(EMAIL);
+        Assertions.assertTrue(LoginPage.isErrorMessageValid());
     }
 
     @Test
     @DisplayName("Авторизация без e-mail")
     public void testLogInWithoutEmail() {
-        driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
-        driver.findElement(By.xpath(BelbazarPage.PASSWORD_FIELD))
-                .sendKeys(UserPage.PASSWORD);
-        driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
-        String errorMassage = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.ERROR_MASSAGE, 3);
-        Assertions.assertEquals(TextPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
+        LoginStep.stepLoginUserWithPasswordOnly(PASSWORD);
+        Assertions.assertTrue(LoginPage.isErrorMessageValid());
     }
 
     @Test
