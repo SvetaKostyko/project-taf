@@ -26,4 +26,10 @@ public class LoginStep {
         loginPage.inputPassword(password);
         loginPage.clickLogin();
     }
+
+    public static void stepLoginWithoutData() {
+        LoginPage loginPage = new LoginPage();
+        loginPage.openLogin();
+        loginPage.clickLogin();
+    }
 }
