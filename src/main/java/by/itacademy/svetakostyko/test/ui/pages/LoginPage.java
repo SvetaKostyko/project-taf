@@ -33,7 +33,7 @@ public class LoginPage {
     }
 
     public static boolean isErrorMessageValid() {
-        String errorMessage = Util.waitForElementToBeVisibleByXPath(driver, ERROR_MESSAGE, 5);
+        String errorMessage = Util.waitForElementToBeVisibleByXPath(driver, ERROR_MESSAGE, 5).getText();
         return TEXT_OF_EXPECTED_ERROR_MESSAGE.equals(errorMessage);
     }
 
