@@ -2,6 +2,7 @@ package by.itacademy.svetakostyko.test.ui.pages;
 
 import by.itacademy.svetakostyko.test.driver.DriverConfiguration;
 import by.itacademy.svetakostyko.test.ui.BelbazarPage;
+import by.itacademy.svetakostyko.test.ui.Util;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -11,21 +12,28 @@ public class LoginPage {
     private static final String EMAIL_FIELD = "//input[@name='info[login]']";
     private static final String PASSWORD_FIELD = "//div[@class='auth_mode email']//input[@type='password']";
     private static final String LOGIN_BUTTON = "//div[@class='button blue'][contains(text(),'Войти')]";
+    private static final String ERROR_MESSAGE = "//div[@class='auth_error_message'][contains(text(),'Ошибка!')]";
+    private static final String TEXT_OF_EXPECTED_ERROR_MESSAGE = "Ошибка! Не правильно введен E-mail или Пароль.";
     public static String LABEL_OF_USER = "//a[@href='/profile/']";
-    private static final String ATTRIBUTE_OF_USER = "onclick";
+   /* private static final String ATTRIBUTE_OF_USER = "onclick";
     private static final String LABEL_OF_LOGIN = "return profile_menu();";
-    private static final String LABEL_OF_LOGOUT = "return show_object('auth');";
+    private static final String LABEL_OF_LOGOUT = "return show_object('auth');";*/
     private final static WebDriver driver = DriverConfiguration.getDriver();
-
-    public static String getUserName() {
-        return driver.findElement(By.xpath(LABEL_OF_USER)).getText();
-    }
 
     public void openLogin() {
         driver.findElement(By.xpath(BUTTON_OF_PROFILE)).click();
     }
 
-    public void inputEmail(String email) {
+    public static String getUserName() {
+        return driver.findElement(By.xpath(LABEL_OF_USER)).getText();
+    }
+
+    public static boolean isErrorMessageValid() {
+        String errorMessage = Util.waitForElementToBeVisibleByXPath(driver, ERROR_MESSAGE, 5);
+        return TEXT_OF_EXPECTED_ERROR_MESSAGE.equals(errorMessage);
+    }
+
+       public void inputEmail(String email) {
         driver.findElement(By.xpath(EMAIL_FIELD))
                 .sendKeys(email);
     }
