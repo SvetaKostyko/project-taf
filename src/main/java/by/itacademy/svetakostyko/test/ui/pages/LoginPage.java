@@ -17,7 +17,6 @@ public class LoginPage {
     public static String LABEL_OF_USER = "//a[@href='/profile/']";
     public static String BUTTON_OF_LOGOUT = "//div[@class='l_menu_3ur_item']//a[@href='/profile/exit/']";
     public static String STATUS_OF_LOGIN = "//a[contains(@class,'top_block_link profile')]";
-    public static String LABEL_OF_LOGOUT = " ";
 
    /* private static final String ATTRIBUTE_OF_USER = "onclick";
     private static final String LABEL_OF_LOGIN = "return profile_menu();";
@@ -53,5 +52,14 @@ public class LoginPage {
 
     public void clickLogout() {
         driver.findElement(By.xpath(BUTTON_OF_LOGOUT)).click();
+    }
+
+    public void waitForProfileButtonAndClick() {
+        Util.waitForElementToBeClickable(driver, BUTTON_OF_PROFILE, 3).click();
+    }
+    public static boolean isUserEmpty() {
+        String actualLabelOfLogIn = driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE))
+                .getText();
+        return actualLabelOfLogIn.isEmpty();
     }
 }
