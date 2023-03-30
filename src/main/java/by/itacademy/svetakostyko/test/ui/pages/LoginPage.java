@@ -8,13 +8,17 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
 
-    private static final String BUTTON_OF_PROFILE = "//a[@class='top_block_link profile']";
+    private static final String BUTTON_OF_PROFILE = "//a[contains(@class,'top_block_link profile')]";
     private static final String EMAIL_FIELD = "//input[@name='info[login]']";
     private static final String PASSWORD_FIELD = "//div[@class='auth_mode email']//input[@type='password']";
     private static final String LOGIN_BUTTON = "//div[@class='button blue'][contains(text(),'Войти')]";
     private static final String ERROR_MESSAGE = "//div[@class='auth_error_message'][contains(text(),'Ошибка!')]";
     private static final String TEXT_OF_EXPECTED_ERROR_MESSAGE = "Ошибка! Не правильно введен E-mail или Пароль.";
     public static String LABEL_OF_USER = "//a[@href='/profile/']";
+    public static String BUTTON_OF_LOGOUT = "//div[@class='l_menu_3ur_item']//a[@href='/profile/exit/']";
+    public static String STATUS_OF_LOGIN = "//a[contains(@class,'top_block_link profile')]";
+    public static String LABEL_OF_LOGOUT = " ";
+
    /* private static final String ATTRIBUTE_OF_USER = "onclick";
     private static final String LABEL_OF_LOGIN = "return profile_menu();";
     private static final String LABEL_OF_LOGOUT = "return show_object('auth');";*/
@@ -45,5 +49,9 @@ public class LoginPage {
 
     public void clickLogin() {
         driver.findElement(By.xpath(LOGIN_BUTTON)).click();
+    }
+
+    public void clickLogout() {
+        driver.findElement(By.xpath(BUTTON_OF_LOGOUT)).click();
     }
 }
