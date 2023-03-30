@@ -33,7 +33,7 @@ public class LoginStep {
 
     public static void stepLogout(String email, String password) {
         stepLoginUser(email, password);
-        loginPage.clickLogin();
+        loginPage.waitForProfileButtonAndClick();
         loginPage.clickLogout();
     }
 }
