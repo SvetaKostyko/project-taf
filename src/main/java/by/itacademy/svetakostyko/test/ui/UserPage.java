@@ -6,5 +6,5 @@ public class UserPage {
     public static String USER_NAME = "Василий";
     public static String ATTRIBUTE_OF_USER = "onclick";
     public static String LABEL_OF_LOGIN = "return profile_menu();";
-    public static String LABEL_OF_LOGOUT = "return show_object('auth');";
+    public static String LABEL_OF_LOGOUT = " ";
 }
