@@ -1,5 +1,4 @@
 package by.itacademy.svetakostyko.test.ui.pages;
-
 import by.itacademy.svetakostyko.test.driver.DriverConfiguration;
 import by.itacademy.svetakostyko.test.ui.BelbazarPage;
 import by.itacademy.svetakostyko.test.ui.Util;
@@ -14,13 +13,9 @@ public class LoginPage {
     private static final String LOGIN_BUTTON = "//div[@class='button blue'][contains(text(),'Войти')]";
     private static final String ERROR_MESSAGE = "//div[@class='auth_error_message'][contains(text(),'Ошибка!')]";
     private static final String TEXT_OF_EXPECTED_ERROR_MESSAGE = "Ошибка! Не правильно введен E-mail или Пароль.";
-    public static String LABEL_OF_USER = "//a[@href='/profile/']";
-    public static String BUTTON_OF_LOGOUT = "//div[@class='l_menu_3ur_item']//a[@href='/profile/exit/']";
-    public static String STATUS_OF_LOGIN = "//a[contains(@class,'top_block_link profile')]";
+    private static final String LABEL_OF_USER = "//a[@href='/profile/']";
+    private static final String BUTTON_OF_LOGOUT = "//div[@class='l_menu_3ur_item']//a[@href='/profile/exit/']";
 
-   /* private static final String ATTRIBUTE_OF_USER = "onclick";
-    private static final String LABEL_OF_LOGIN = "return profile_menu();";
-    private static final String LABEL_OF_LOGOUT = "return show_object('auth');";*/
     private final static WebDriver driver = DriverConfiguration.getDriver();
 
     public void openLogin() {
@@ -36,7 +31,7 @@ public class LoginPage {
         return TEXT_OF_EXPECTED_ERROR_MESSAGE.equals(errorMessage);
     }
 
-       public void inputEmail(String email) {
+    public void inputEmail(String email) {
         driver.findElement(By.xpath(EMAIL_FIELD))
                 .sendKeys(email);
     }
@@ -57,6 +52,7 @@ public class LoginPage {
     public void waitForProfileButtonAndClick() {
         Util.waitForElementToBeClickable(driver, BUTTON_OF_PROFILE, 3).click();
     }
+
     public static boolean isUserEmpty() {
         String actualLabelOfLogIn = driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE))
                 .getText();
