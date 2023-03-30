@@ -45,10 +45,8 @@ public class BelbazarTest {
     @Test
     @DisplayName("Авторизация без e-mail и без пароля")
     public void testLogInWithoutData() {
-        driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
-        driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
-        String errorMassage = Util.waitForElementToBeVisibleByXPath(driver, BelbazarPage.ERROR_MASSAGE, 3);
-        Assertions.assertEquals(TextPage.TEXT_OF_ERROR_MASSAGE, errorMassage);
+        LoginStep.stepLoginWithoutData();
+        Assertions.assertTrue(LoginPage.isErrorMessageValid());
     }
 
     @Test
