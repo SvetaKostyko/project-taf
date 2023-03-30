@@ -11,7 +11,7 @@ public class BelbazarStep {
         this.driver = driver;
     }
 
-    public void stepTestLogInValidatedData() {
+/*    public void stepTestLogInValidatedData() {
         new LoginPage()
                 .setEmail()
         driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE)).click();
@@ -20,5 +20,5 @@ public class BelbazarStep {
         driver.findElement(By.xpath(BelbazarPage.PASSWORD_FIELD))
                 .sendKeys(UserPage.PASSWORD);
         driver.findElement(By.xpath(BelbazarPage.LOGIN_BUTTON)).click();
-    }
+    }*/
 }

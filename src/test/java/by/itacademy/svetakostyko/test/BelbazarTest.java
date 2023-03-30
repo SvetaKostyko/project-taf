@@ -1,18 +1,14 @@
 package by.itacademy.svetakostyko.test;
-
 import by.itacademy.svetakostyko.test.driver.DriverConfiguration;
 import by.itacademy.svetakostyko.test.ui.BelbazarPage;
 import by.itacademy.svetakostyko.test.ui.TextPage;
-import by.itacademy.svetakostyko.test.ui.UserPage;
 import by.itacademy.svetakostyko.test.ui.Util;
 import by.itacademy.svetakostyko.test.ui.pages.LoginPage;
 import by.itacademy.svetakostyko.test.ui.steps.LoginStep;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import static by.itacademy.svetakostyko.test.BelbazarProperties.*;
+import static by.itacademy.svetakostyko.test.ui.UserData.*;
 
 public class BelbazarTest {
     WebDriver driver = DriverConfiguration.getDriver();
