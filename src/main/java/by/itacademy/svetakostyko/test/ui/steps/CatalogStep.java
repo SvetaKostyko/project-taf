@@ -13,5 +13,8 @@ public class CatalogStep {
     }
 
     public static Product getProductFromBasket() {
+        CatalogPage catalogPage = new CatalogPage();
+        Product productInBasket = catalogPage.getFirstProductFromBasket();
+        return productInBasket;
     }
 }
