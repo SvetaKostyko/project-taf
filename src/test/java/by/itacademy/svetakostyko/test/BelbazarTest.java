@@ -51,7 +51,7 @@ public class BelbazarTest {
     public void testBasketItem() {
         Product expectedProduct = CatalogStep.putProductIntoBasket(CatalogPage.TEXT_OF_SEARCHING);
         Product actualProduct = CatalogStep.getProductFromBasket();
-        Assertions.assertEquals(expectedProduct, actualProduct);
+        Assertions.assertEquals(expectedProduct.toString(), actualProduct.toString());
     }
 
     @Test
