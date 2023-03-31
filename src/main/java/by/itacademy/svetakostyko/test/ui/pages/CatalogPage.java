@@ -34,12 +34,12 @@ public class CatalogPage {
 
     public Product putFirstProductIntoBasket() {
         Product product = new Product();
-        product.firstProductOnPageBrand = Util
+        product.brand = Util
                 .waitForElementToBeVisibleByXPath(driver, BRAND_NAME, 3).getText();
-        product.firstProductOnPageCode = driver.findElement(By.xpath((CODE_OF_PRODUCT))).getText().substring(5, 9);
-        product.firstProductOnPagePrice = driver.findElement(By.xpath((PRICE_OF_PRODUCT))).getText();
+        product.code = driver.findElement(By.xpath((CODE_OF_PRODUCT))).getText().substring(5, 9);
+        product.price = driver.findElement(By.xpath((PRICE_OF_PRODUCT))).getText();
         driver.findElement(By.xpath(BASKET_BUTTON)).click();
-        product.sizeOfProduct = Util
+        product.size = Util
                 .waitForElementToBeVisibleByXPath(driver, SIZE_BUTTON, 3).getText();
         driver.findElement(By.xpath(SIZE_BUTTON)).click();
         driver.findElement(By.xpath(BUTTON_TO_BASKET)).click();
@@ -49,11 +49,11 @@ public class CatalogPage {
     public Product getFirstProductFromBasket() {
         Product product = new Product();
         driver.findElement(By.xpath(BelbazarPage.TOP_BASKET)).click();
-        product.productInBasket = Util
+        product.brand = Util
                 .waitForElementToBeVisibleByXPath(driver, BRAND_IN_BASKET, 3).getText();
-        product.codeOfProductInBasket = driver.findElement(By.xpath(CODE_IN_BASKET)).getText();
-        product.sizeInBasket = driver.findElement(By.xpath(SIZE_OF_PRODUCT_IN_BASKET)).getText();
-        product.priceInBasket = driver.findElement(By.xpath(PRICE_OF_PRODUCT_IN_BASKET)).getText();
+        product.code = driver.findElement(By.xpath(CODE_IN_BASKET)).getText();
+        product.size = driver.findElement(By.xpath(SIZE_OF_PRODUCT_IN_BASKET)).getText();
+        product.price = driver.findElement(By.xpath(PRICE_OF_PRODUCT_IN_BASKET)).getText();
         return product;
     }
 }
