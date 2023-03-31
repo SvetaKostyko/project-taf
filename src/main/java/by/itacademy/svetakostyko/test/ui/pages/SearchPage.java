@@ -15,6 +15,9 @@ public class SearchPage {
     private final static String BRAND_IN_BASKET = "//div[@class='basket_item_brand']";
     private final static String CODE_IN_BASKET = "(//div[@class='param']//div[@class='rightText'])[2]";
     private final static String SIZE_OF_PRODUCT_IN_BASKET = "//div[@class='basket_size_box']";
+    private final static String TEXT_OF_SEARCHING = "Костюмы";
 
     private final static WebDriver driver = DriverConfiguration.getDriver();
-}
+
+    }
+
