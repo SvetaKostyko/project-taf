@@ -55,29 +55,6 @@ public class BelbazarTest {
     }
 
     @Test
-    @DisplayName("Добавление товара в корзину")
-    public void testSearchCostume() {
-        /*driver.findElement(By.xpath(BelbazarPage.SEARCH_FIELD)).sendKeys(TextPage.PRODUCT);
-        driver.findElement(By.xpath(BelbazarPage.SEARCH_BUTTON)).click();*/
-        /*String firstProductOnPageBrand = Util
-                .waitForElementToBeVisibleByXPath(driver, BelbazarPage.BRAND_NAME, 3).getText();
-        String firstProductOnPageCode = driver.findElement(By.xpath((BelbazarPage.CODE_OF_PRODUCT))).getText().substring(5, 9);
-        driver.findElement(By.xpath(BelbazarPage.BASKET_BUTTON)).click();
-        String sizeOfProduct = Util
-                .waitForElementToBeVisibleByXPath(driver, BelbazarPage.SIZE_BUTTON, 3).getText();
-        driver.findElement(By.xpath(BelbazarPage.SIZE_BUTTON)).click();
-        driver.findElement(By.xpath(BelbazarPage.BUTTON_TO_BASKET)).click();*/
-        /*driver.findElement(By.xpath(BelbazarPage.TOP_BASKET)).click();
-        String productInBasket = Util
-                .waitForElementToBeVisibleByXPath(driver, BelbazarPage.BRAND_IN_BASKET, 3).getText();
-        String codeOfProductInBasket = driver.findElement(By.xpath(BelbazarPage.CODE_IN_BASKET)).getText();
-        String sizeInBasket = driver.findElement(By.xpath(BelbazarPage.SIZE_OF_PRODUCT_IN_BASKET)).getText();*/
-       /* Assertions.assertEquals(firstProductOnPageBrand, productInBasket);
-        Assertions.assertEquals(firstProductOnPageCode, codeOfProductInBasket);
-        Assertions.assertEquals(sizeOfProduct, sizeInBasket);*/
-    }
-
-    @Test
     @DisplayName("Выход из учетной записи")
     public void testLogOut() {
         LoginStep.stepLogout(EMAIL, PASSWORD);
