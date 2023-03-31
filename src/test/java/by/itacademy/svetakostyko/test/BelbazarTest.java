@@ -2,14 +2,11 @@ package by.itacademy.svetakostyko.test;
 import by.itacademy.svetakostyko.test.driver.DriverConfiguration;
 import by.itacademy.svetakostyko.test.model.Product;
 import by.itacademy.svetakostyko.test.ui.BelbazarPage;
-import by.itacademy.svetakostyko.test.ui.TextPage;
-import by.itacademy.svetakostyko.test.ui.Util;
 import by.itacademy.svetakostyko.test.ui.pages.CatalogPage;
 import by.itacademy.svetakostyko.test.ui.pages.LoginPage;
 import by.itacademy.svetakostyko.test.ui.steps.CatalogStep;
 import by.itacademy.svetakostyko.test.ui.steps.LoginStep;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import static by.itacademy.svetakostyko.test.ui.UserData.*;
 
