@@ -2,7 +2,10 @@ package by.itacademy.svetakostyko.test;
 
 import org.junit.Test;
 
+import static io.restassured.RestAssured.when;
+
 public class ApiTest {
+
     @Test
     public void testGetRequest() {
         String URL = "https://belbazar24.by/";
