@@ -36,7 +36,7 @@ public class CatalogPage {
         Product product = new Product();
         product.brand = Util
                 .waitForElementToBeVisibleByXPath(driver, BRAND_NAME, 3).getText();
-        product.code = driver.findElement(By.xpath((CODE_OF_PRODUCT))).getText().substring(5, 9);
+        product.code = driver.findElement(By.xpath((CODE_OF_PRODUCT))).getText().substring(6, 9);
         product.price = driver.findElement(By.xpath((PRICE_OF_PRODUCT))).getText();
         driver.findElement(By.xpath(BASKET_BUTTON)).click();
         product.size = Util
