@@ -48,7 +48,7 @@ public class CatalogPage {
 
     public Product getFirstProductFromBasket() {
         Product product = new Product();
-        driver.findElement(By.xpath(BelbazarPage.TOP_BASKET)).click();
+        driver.findElement(By.xpath(TOP_BASKET)).click();
         product.brand = Util
                 .waitForElementToBeVisibleByXPath(driver, BRAND_IN_BASKET, 3).getText();
         product.code = driver.findElement(By.xpath(CODE_IN_BASKET)).getText();
