@@ -22,7 +22,7 @@ public class CatalogPage {
     private final static String SIZE_OF_PRODUCT_IN_BASKET = "//div[@class='basket_size_box']";
     private final static String PRICE_OF_PRODUCT = "(//div[@class='product_item_i']//span[@class='price'])[1]";
     private final static String PRICE_OF_PRODUCT_IN_BASKET = "//div[@class='oneParam noLine']//span[@class='priceOneProd']";
-    private final static String TEXT_OF_SEARCHING = "Костюмы";
+    public final static String TEXT_OF_SEARCHING = "Костюмы";
 
     private final static WebDriver driver = DriverConfiguration.getDriver();
 
