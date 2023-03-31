@@ -1,7 +1,5 @@
 package by.itacademy.svetakostyko.test.ui.pages;
 import by.itacademy.svetakostyko.test.driver.DriverConfiguration;
-import by.itacademy.svetakostyko.test.ui.BelbazarPage;
-import by.itacademy.svetakostyko.test.ui.Util;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

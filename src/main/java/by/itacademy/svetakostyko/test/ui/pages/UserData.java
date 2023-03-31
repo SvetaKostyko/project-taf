@@ -1,4 +1,4 @@
-package by.itacademy.svetakostyko.test.ui;
+package by.itacademy.svetakostyko.test.ui.pages;
 
 public class UserData {
     public static String EMAIL = "123tfh123@mail.ru";
