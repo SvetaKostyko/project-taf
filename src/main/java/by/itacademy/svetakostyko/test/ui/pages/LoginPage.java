@@ -54,7 +54,7 @@ public class LoginPage {
     }
 
     public static boolean isUserEmpty() {
-        String actualLabelOfLogIn = driver.findElement(By.xpath(BelbazarPage.BUTTON_OF_PROFILE))
+        String actualLabelOfLogIn = driver.findElement(By.xpath(BUTTON_OF_PROFILE))
                 .getText();
         return actualLabelOfLogIn.isEmpty();
     }
