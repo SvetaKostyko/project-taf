@@ -3,7 +3,6 @@ package by.itacademy.svetakostyko.test.ui.pages;
 import by.itacademy.svetakostyko.test.driver.DriverConfiguration;
 import by.itacademy.svetakostyko.test.model.Product;
 import by.itacademy.svetakostyko.test.ui.BelbazarPage;
-import by.itacademy.svetakostyko.test.ui.TextPage;
 import by.itacademy.svetakostyko.test.ui.Util;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +21,7 @@ public class CatalogPage {
     private final static String CODE_IN_BASKET = "(//div[@class='param']//div[@class='rightText'])[2]";
     private final static String SIZE_OF_PRODUCT_IN_BASKET = "//div[@class='basket_size_box']";
     private final static String PRICE_OF_PRODUCT = "(//div[@class='product_item_i']//span[@class='price'])[1]";
+    private final static String PRICE_OF_PRODUCT_IN_BASKET = "//div[@class='oneParam noLine']//span[@class='priceOneProd']";
     private final static String TEXT_OF_SEARCHING = "Костюмы";
 
     private final static WebDriver driver = DriverConfiguration.getDriver();
@@ -43,6 +43,17 @@ public class CatalogPage {
                 .waitForElementToBeVisibleByXPath(driver, SIZE_BUTTON, 3).getText();
         driver.findElement(By.xpath(SIZE_BUTTON)).click();
         driver.findElement(By.xpath(BUTTON_TO_BASKET)).click();
+        return product;
+    }
+
+    public Product getFirstProductFromBasket() {
+        Product product = new Product();
+        driver.findElement(By.xpath(BelbazarPage.TOP_BASKET)).click();
+        product.productInBasket = Util
+                .waitForElementToBeVisibleByXPath(driver, BRAND_IN_BASKET, 3).getText();
+        product.codeOfProductInBasket = driver.findElement(By.xpath(CODE_IN_BASKET)).getText();
+        product.sizeInBasket = driver.findElement(By.xpath(SIZE_OF_PRODUCT_IN_BASKET)).getText();
+        product.priceInBasket = driver.findElement(By.xpath(PRICE_OF_PRODUCT_IN_BASKET)).getText();
         return product;
     }
 }
