@@ -22,7 +22,11 @@ public class CatalogPage {
     private final static String PRICE_OF_PRODUCT_IN_BASKET = "//div[@class='oneParam noLine']//span[@class='priceOneProd']";
     public final static String TEXT_OF_SEARCHING = "Костюмы";
 
-    private final static WebDriver driver = DriverConfiguration.getDriver();
+    private final WebDriver driver;
+
+    public CatalogPage() {
+        driver =  DriverConfiguration.getDriver();
+    }
 
 
     public void searchForProducts(String productCategory) {
