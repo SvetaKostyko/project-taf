@@ -4,9 +4,13 @@ import by.itacademy.svetakostyko.test.ui.pages.LoginPage;
 
 public class LoginStep {
 
-    private static final LoginPage loginPage = new LoginPage();
+    private final LoginPage loginPage;
 
-    public static void stepLoginUser(String email, String password) {
+    public LoginStep() {
+        loginPage = new LoginPage();
+    }
+
+    public void stepLoginUser(String email, String password) {
         loginPage.openLogin();
         loginPage.inputEmail(email);
         loginPage.inputPassword(password);
@@ -14,26 +18,37 @@ public class LoginStep {
 
     }
 
-    public static void stepLoginUserWithEmailOnly(String email) {
+    public void stepLoginUserWithEmailOnly(String email) {
         loginPage.openLogin();
         loginPage.inputEmail(email);
         loginPage.clickLogin();
     }
 
-    public static void stepLoginUserWithPasswordOnly(String password) {
+    public void stepLoginUserWithPasswordOnly(String password) {
         loginPage.openLogin();
         loginPage.inputPassword(password);
         loginPage.clickLogin();
     }
 
-    public static void stepLoginWithoutData() {
+    public void stepLoginWithoutData() {
         loginPage.openLogin();
         loginPage.clickLogin();
     }
 
-    public static void stepLogout(String email, String password) {
-        stepLoginUser(email, password);
+    public void stepLogout() {
         loginPage.waitForProfileButtonAndClick();
         loginPage.clickLogout();
+    }
+
+    public String getUserName() {
+        return loginPage.getUserName();
+    }
+
+    public boolean isErrorMessageValid() {
+        return loginPage.isErrorMessageValid();
+    }
+
+    public boolean isUserEmpty() {
+        return loginPage.isUserEmpty();
     }
 }
