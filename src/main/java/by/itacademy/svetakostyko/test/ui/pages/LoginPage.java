@@ -14,17 +14,21 @@ public class LoginPage {
     private static final String LABEL_OF_USER = "//a[@href='/profile/']";
     private static final String BUTTON_OF_LOGOUT = "//div[@class='l_menu_3ur_item']//a[@href='/profile/exit/']";
 
-    private final static WebDriver driver = DriverConfiguration.getDriver();
+    private final WebDriver driver;
+
+    public LoginPage() {
+        driver = DriverConfiguration.getDriver();
+    }
 
     public void openLogin() {
         driver.findElement(By.xpath(BUTTON_OF_PROFILE)).click();
     }
 
-    public static String getUserName() {
+    public String getUserName() {
         return driver.findElement(By.xpath(LABEL_OF_USER)).getText();
     }
 
-    public static boolean isErrorMessageValid() {
+    public boolean isErrorMessageValid() {
         String errorMessage = Util.waitForElementToBeVisibleByXPath(driver, ERROR_MESSAGE, 5).getText();
         return TEXT_OF_EXPECTED_ERROR_MESSAGE.equals(errorMessage);
     }
@@ -51,7 +55,7 @@ public class LoginPage {
         Util.waitForElementToBeClickable(driver, BUTTON_OF_PROFILE, 3).click();
     }
 
-    public static boolean isUserEmpty() {
+    public boolean isUserEmpty() {
         String actualLabelOfLogIn = driver.findElement(By.xpath(BUTTON_OF_PROFILE))
                 .getText();
         return actualLabelOfLogIn.isEmpty();
