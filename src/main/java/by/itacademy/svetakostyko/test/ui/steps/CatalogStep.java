@@ -5,15 +5,19 @@ import by.itacademy.svetakostyko.test.ui.pages.CatalogPage;
 
 public class CatalogStep {
 
-    public static Product putProductIntoBasket(String productCategory) {
-        CatalogPage catalogPage = new CatalogPage();
+    private final CatalogPage catalogPage;
+
+    public CatalogStep() {
+        catalogPage = new CatalogPage();
+    }
+
+    public Product putProductIntoBasket(String productCategory) {
         catalogPage.searchForProducts(productCategory);
         Product product = catalogPage.putFirstProductIntoBasket();
         return product;
     }
 
-    public static Product getProductFromBasket() {
-        CatalogPage catalogPage = new CatalogPage();
+    public Product getProductFromBasket() {
         Product productInBasket = catalogPage.getFirstProductFromBasket();
         return productInBasket;
     }
