@@ -1,7 +1,8 @@
 package by.itacademy.svetakostyko.test;
 
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import org.json.JSONObject;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,17 +22,17 @@ public class ApiTest {
                 .statusCode(200);
     }
     @Test
-    public void testInvalidLogin() {
+    @DisplayName("Вход с корректными данными")
+    public void testLoginWithcorrectData() {
         given()
-                .contentType(ContentType.JSON)
-                .body("{\"info[login]\":\"23tfh123@mail.ru\",\"info[pass]\":\"bh123bh\"}")
+                .contentType("multipart/form-data")
+                .multiPart("info[login]", "123tfh123@mail.ru")
+                .multiPart("info[pass]", "bh123bh")
                 .when()
                 .post()
                 .then()
-                .statusCode(200)
-                .log().body();
+                .statusCode(200);
     }
-
 //    @Test
 //    public void testPostStudentWithSpacesInFirstName() {
 //        JSONObject request = new JSONObject();
