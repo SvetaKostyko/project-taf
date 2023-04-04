@@ -1,14 +1,11 @@
 package by.itacademy.svetakostyko.test;
 
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
-import static org.hamcrest.core.IsEqual.equalTo;
 
 public class ApiTest {
 
@@ -21,33 +18,28 @@ public class ApiTest {
                 .then()
                 .statusCode(200);
     }
+
     @Test
     @DisplayName("Вход с корректными данными")
-    public void testLoginWithcorrectData() {
-        given()
-                .contentType("multipart/form-data")
+    public void testLoginWithСorrectData() {
+        given().contentType("multipart/form-data")
+                .multiPart("sendform", "auth")
                 .multiPart("info[login]", "123tfh123@mail.ru")
                 .multiPart("info[pass]", "bh123bh")
-                .when()
-                .post()
+                .get("https://belbazar24.by/")
                 .then()
                 .statusCode(200);
     }
-//    @Test
-//    public void testPostStudentWithSpacesInFirstName() {
-//        JSONObject request = new JSONObject();
-//        request.put("sendform", "auth");
-//        request.put("info[login]", "123tfh123@mail.ru");
-//        request.put("info[pass]", "bh123bh");
-//        given()
-//                .contentType(ContentType.JSON)
-//                .accept(ContentType.JSON)
-//                .body(request.toString())
-//                .when()
-//                .post(String.valueOf(request))
-//                .then().log().body()
-//                .assertThat()
-//                .statusCode(200)
-//                .log().body();
-//    }
+    @Test
+    @DisplayName("Поиск товара")
+    public void testSearch() {
+        String response = given()
+                .param("search", "%D0%9A%D0%BE%D1%81%D1%82%D1%8E%D0%BC%D1%8B")
+                .get("https://belbazar24.by/women/")
+                .then()
+                .statusCode(200)
+                .extract().asString();
+        System.out.println(response);
+        Assertions.assertTrue(response.contains("Костюмы"));
+    }
 }
