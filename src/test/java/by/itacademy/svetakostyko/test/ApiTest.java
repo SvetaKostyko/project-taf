@@ -1,5 +1,6 @@
 package by.itacademy.svetakostyko.test;
 
+import by.itacademy.svetakostyko.test.ui.pages.BelbazarPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ public class ApiTest {
     public void testGetRequest() {
         String URL = "https://belbazar24.by/";
         when()
-                .get(URL)
+                .get(BelbazarPage.URL)
                 .then()
                 .statusCode(200);
     }
@@ -39,7 +40,6 @@ public class ApiTest {
                 .then()
                 .statusCode(200)
                 .extract().asString();
-        System.out.println(response);
-        Assertions.assertTrue(response.contains("Костюмы"));
+                Assertions.assertTrue(response.contains("Костюмы"));
     }
 }
