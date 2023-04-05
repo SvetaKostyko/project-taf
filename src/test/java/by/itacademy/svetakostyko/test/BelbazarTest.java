@@ -1,15 +1,14 @@
 package by.itacademy.svetakostyko.test;
 
-import by.itacademy.svetakostyko.test.driver.DriverConfiguration;
-import by.itacademy.svetakostyko.test.model.Product;
-import by.itacademy.svetakostyko.test.ui.pages.BelbazarPage;
-import by.itacademy.svetakostyko.test.ui.pages.CatalogPage;
-import by.itacademy.svetakostyko.test.ui.steps.CatalogStep;
-import by.itacademy.svetakostyko.test.ui.steps.LoginStep;
+import by.itacademy.svetakostyko.driver.DriverConfiguration;
+import by.itacademy.svetakostyko.model.Product;
+import by.itacademy.svetakostyko.ui.pages.BelbazarPage;
+import by.itacademy.svetakostyko.ui.pages.CatalogPage;
+import by.itacademy.svetakostyko.ui.steps.CatalogStep;
+import by.itacademy.svetakostyko.ui.steps.LoginStep;
+import by.itacademy.svetakostyko.ui.pages.UserData;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
-
-import static by.itacademy.svetakostyko.test.ui.pages.UserData.*;
 
 public class BelbazarTest {
     WebDriver driver;
@@ -24,15 +23,15 @@ public class BelbazarTest {
     @DisplayName("Авторизация с корректными данными")
     public void testLoginUserWithValidData() {
         LoginStep loginStep = new LoginStep();
-        loginStep.stepLoginUser(EMAIL, PASSWORD);
-        Assertions.assertEquals(USER_NAME, loginStep.getUserName());
+        loginStep.stepLoginUser(UserData.EMAIL, UserData.PASSWORD);
+        Assertions.assertEquals(UserData.USER_NAME, loginStep.getUserName());
     }
 
     @Test
     @DisplayName("Авторизация без пароля")
     public void testLoginUserWithEmailOnly() {
         LoginStep loginStep = new LoginStep();
-        loginStep.stepLoginUserWithEmailOnly(EMAIL);
+        loginStep.stepLoginUserWithEmailOnly(UserData.EMAIL);
         Assertions.assertTrue(loginStep.isErrorMessageValid());
     }
 
@@ -40,7 +39,7 @@ public class BelbazarTest {
     @DisplayName("Авторизация без e-mail")
     public void testLogInWithoutEmail() {
         LoginStep loginStep = new LoginStep();
-        loginStep.stepLoginUserWithPasswordOnly(PASSWORD);
+        loginStep.stepLoginUserWithPasswordOnly(UserData.PASSWORD);
         Assertions.assertTrue(loginStep.isErrorMessageValid());
     }
 
@@ -65,7 +64,7 @@ public class BelbazarTest {
     @DisplayName("Выход из учетной записи")
     public void testLogOut() {
         LoginStep loginStep = new LoginStep();
-        loginStep.stepLoginUser(EMAIL, PASSWORD);
+        loginStep.stepLoginUser(UserData.EMAIL, UserData.PASSWORD);
         loginStep.stepLogout();
         Assertions.assertTrue(loginStep.isUserEmpty());
     }

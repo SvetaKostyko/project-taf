@@ -1,6 +1,6 @@
-package by.itacademy.svetakostyko.test.ui.steps;
+package by.itacademy.svetakostyko.ui.steps;
 
-import by.itacademy.svetakostyko.test.ui.pages.LoginPage;
+import by.itacademy.svetakostyko.ui.pages.LoginPage;
 
 public class LoginStep {
 

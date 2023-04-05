@@ -1,7 +1,7 @@
-package by.itacademy.svetakostyko.test.ui.steps;
+package by.itacademy.svetakostyko.ui.steps;
 
-import by.itacademy.svetakostyko.test.model.Product;
-import by.itacademy.svetakostyko.test.ui.pages.CatalogPage;
+import by.itacademy.svetakostyko.model.Product;
+import by.itacademy.svetakostyko.ui.pages.CatalogPage;
 
 public class CatalogStep {
 

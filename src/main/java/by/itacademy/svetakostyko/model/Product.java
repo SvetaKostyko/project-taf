@@ -1,4 +1,4 @@
-package by.itacademy.svetakostyko.test.model;
+package by.itacademy.svetakostyko.model;
 
 public class Product {
     public static String brand;

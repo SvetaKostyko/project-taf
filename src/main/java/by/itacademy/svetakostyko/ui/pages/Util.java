@@ -1,4 +1,4 @@
-package by.itacademy.svetakostyko.test.ui.pages;
+package by.itacademy.svetakostyko.ui.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

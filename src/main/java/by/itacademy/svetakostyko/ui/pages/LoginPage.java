@@ -1,5 +1,5 @@
-package by.itacademy.svetakostyko.test.ui.pages;
-import by.itacademy.svetakostyko.test.driver.DriverConfiguration;
+package by.itacademy.svetakostyko.ui.pages;
+import by.itacademy.svetakostyko.driver.DriverConfiguration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

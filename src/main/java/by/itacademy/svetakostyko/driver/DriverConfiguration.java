@@ -1,4 +1,4 @@
-package by.itacademy.svetakostyko.test.driver;
+package by.itacademy.svetakostyko.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

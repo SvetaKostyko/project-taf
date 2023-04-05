@@ -1,4 +1,4 @@
-package by.itacademy.svetakostyko.test.api;
+package by.itacademy.svetakostyko.api;
 
 public class ApiConfiguration {
     public static final String ENDPOINT_URL = "https://belbazar24.by/";

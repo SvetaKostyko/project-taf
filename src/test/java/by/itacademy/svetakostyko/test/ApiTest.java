@@ -1,6 +1,6 @@
 package by.itacademy.svetakostyko.test;
 
-import by.itacademy.svetakostyko.test.api.ApiConfiguration;
+import by.itacademy.svetakostyko.api.ApiConfiguration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
