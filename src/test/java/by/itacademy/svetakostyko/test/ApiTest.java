@@ -40,6 +40,6 @@ public class ApiTest {
                 .then()
                 .statusCode(200)
                 .extract().asString();
-        Assertions.assertTrue(response.contains(ApiConfiguration.EXPECTED_TEXT));
+        Assertions.assertTrue(response.contains("Костюмы"));
     }
 }
