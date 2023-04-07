@@ -55,7 +55,7 @@ public class BelbazarTest {
     @DisplayName("Добавление товара в корзину")
     public void testBasketItem() {
         CatalogStep catalogStep = new CatalogStep();
-        Product expectedProduct = catalogStep.putProductIntoBasket(CatalogPage.TEXT_OF_SEARCHING);
+        Product expectedProduct = catalogStep.putProductIntoBasket("Костюмы");
         Product actualProduct = catalogStep.getProductFromBasket();
         Assertions.assertEquals(expectedProduct.toString(), actualProduct.toString());
     }
