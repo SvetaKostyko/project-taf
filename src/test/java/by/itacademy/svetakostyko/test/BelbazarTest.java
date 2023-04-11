@@ -3,7 +3,6 @@ package by.itacademy.svetakostyko.test;
 import by.itacademy.svetakostyko.driver.DriverConfiguration;
 import by.itacademy.svetakostyko.model.Product;
 import by.itacademy.svetakostyko.ui.pages.BelbazarPage;
-import by.itacademy.svetakostyko.ui.pages.CatalogPage;
 import by.itacademy.svetakostyko.ui.steps.CatalogStep;
 import by.itacademy.svetakostyko.ui.steps.LoginStep;
 import by.itacademy.svetakostyko.ui.pages.UserData;
@@ -57,7 +56,7 @@ public class BelbazarTest {
         CatalogStep catalogStep = new CatalogStep();
         Product expectedProduct = catalogStep.putProductIntoBasket("Костюмы");
         Product actualProduct = catalogStep.getProductFromBasket();
-        Assertions.assertEquals(expectedProduct.toString(), actualProduct.toString());
+        Assertions.assertEquals(expectedProduct, actualProduct);
     }
 
     @Test
