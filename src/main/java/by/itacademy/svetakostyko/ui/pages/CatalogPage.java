@@ -24,7 +24,7 @@ public class CatalogPage {
     private final WebDriver driver;
 
     public CatalogPage() {
-        driver =  DriverConfiguration.getDriver();
+        driver = DriverConfiguration.getDriver();
     }
 
 
