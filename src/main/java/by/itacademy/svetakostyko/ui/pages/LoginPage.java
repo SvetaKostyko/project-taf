@@ -1,4 +1,5 @@
 package by.itacademy.svetakostyko.ui.pages;
+
 import by.itacademy.svetakostyko.driver.DriverConfiguration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class LoginPage {
 
     private static final String BUTTON_OF_PROFILE = "//a[contains(@class,'top_block_link profile')]";
-    private static final String EMAIL_FIELD = "//input[@name='info[login]']";
+    private static final String EMAIL_FIELD = "info[login]";
     private static final String PASSWORD_FIELD = "//div[@class='auth_mode email']//input[@type='password']";
     private static final String LOGIN_BUTTON = "//div[@class='button blue'][contains(text(),'Войти')]";
     private static final String ERROR_MESSAGE = "//div[@class='auth_error_message'][contains(text(),'Ошибка!')]";
@@ -34,7 +35,7 @@ public class LoginPage {
     }
 
     public void inputEmail(String email) {
-        driver.findElement(By.xpath(EMAIL_FIELD))
+        driver.findElement(By.name(EMAIL_FIELD))
                 .sendKeys(email);
     }
 
